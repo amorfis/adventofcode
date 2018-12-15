@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.duration.Duration
 
-object App9CustomCollection {
+object App9bFast {
 
 //  val PlayersCount = 459
   val PlayersCount = 459
