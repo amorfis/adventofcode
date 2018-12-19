@@ -1,15 +1,15 @@
 package app15b
 
-import java.util.UUID
 
-import app15.App15.{Attack, Board, Enemy, FighterTurnResult, Position, fightersOrdering, positionOrdering}
+import app15b.App15b.{Board, Enemy, FighterTurnResult, Position, fightersOrdering, positionOrdering}
 
 import scala.collection.Set
-import App15.toRichPosition
+import App15b.toRichPosition
 
 sealed trait Fighter  {
   val hp: Int
   val position: Position
+  val attack: Int
 
   def isInRange(position: Position) = {
     (this.position._1 - position._1, this.position._2 - position._2) match {
@@ -142,16 +142,18 @@ sealed trait Fighter  {
   }
 
   def attack(enemy: Fighter): Fighter = {
-    enemy.takeHit(Attack)
+    enemy.takeHit(attack)
   }
 
   def takeHit(hpToSubtract: Int): Fighter
 }
 
 case class Elf(hp: Int, position: Position) extends Fighter {
+  override val attack: Int = 19
   override def takeHit(hpToSubtract: Int): Elf = this.copy(hp = this.hp - hpToSubtract)
 }
 
 case class Goblin(hp: Int, position: Position) extends Fighter {
+  override val attack: Int = 3
   override def takeHit(hpToSubtract: Int): Goblin = this.copy(hp = this.hp - hpToSubtract)
 }

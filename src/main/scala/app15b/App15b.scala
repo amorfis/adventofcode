@@ -2,9 +2,8 @@ package app15b
 
 import scala.io.Source
 
-object App15 {
+object App15b {
 
-  val Attack = 3
   val InitialHp = 200
 
   type Position = (Int, Int)

@@ -1,8 +1,7 @@
 package app15b
 
-import java.util.UUID
 
-import app15.App15.{Board, FighterTurnResult, fightersOrdering}
+import app15b.App15b.{Board, FighterTurnResult, fightersOrdering}
 
 case class Game(board: Board, elves: Seq[Elf], goblins: Seq[Goblin], roundsCount: Int = 0) {
 
@@ -65,6 +64,7 @@ case class Game(board: Board, elves: Seq[Elf], goblins: Seq[Goblin], roundsCount
                 if (a.hp > 0) {
                   subturn.elvesToTurn.filterNot(_ == b) :+ a
                 } else {
+                  throw new RuntimeException("OMG!!! Elf killed!")
                   subturn.elvesToTurn.filterNot(_ == b)
                 }
 
